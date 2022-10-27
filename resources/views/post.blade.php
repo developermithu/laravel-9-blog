@@ -9,6 +9,19 @@
 
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
     <script src="{{ mix('js/app.js') }}" defer></script>
+
+    {{-- highlight js --}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/atom-one-dark.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/highlight.min.js"></script>
+    <script>
+        // first, find all the div.code blocks
+        document.querySelectorAll('.code').forEach(el => {
+            // then highlight each
+            hljs.highlightAuto(el);
+        });
+    </script>
+
 </head>
 
 <body>
@@ -133,19 +146,57 @@
         class="grid bg-white grid-cols-12 gap-10 lg:gap-20 py-16 container mx-auto px-5 sm:px-10 lg:px-40 overflow-x-hidden">
         <article class=" col-span-12 lg:col-span-8 bg-white border border-gray-200 ">
             <h3 class="font-semibold w-full text-xl p-3 bg-blue-500 text-white">Newest Articles</h3>
-            <div class="px-5 py-10 border-b flex flex-col lg:flex-row items-start justify-between gap-5">
+            <div class="flex flex-col gap-5">
                 <img src='https://cdn.pixabay.com/photo/2017/10/10/21/46/laptop-2838917_960_720.jpg' alt=''
-                    class=" w-80 h-60 hover:scale-105 transition duration-500 hover:grayscale cursor-pointer" />
-                <div class="flex flex-col gap-3 capitalize text-sm">
-                    <h3 class="text-2xl font-semibold text-blue-500 hover:underline cursor-pointer">How to learn react js in 2023</h3>
-                    <p class=" font-semibold">
-                        Author: <a href="#" class="text-blue-500 hover:underline">deveoper mithu</a>
-                    </p>
-                    <p class="flex flex-wrap gap-2 font-semibold">
-                        categories:
-                        <a href="#" class="text-blue-500 hover:underline ">Opinion |</a>
-                        <a href="#" class="text-blue-500 hover:underline ">tutorial |</a>
-                        <a href="#" class="text-blue-500 hover:underline ">tutorial</a>
+                    class=" w-full" />
+                <div class="flex flex-col px-5 pb-5 gap-3 capitalize text-sm">
+                    <h1 class="text-2xl font-semibold text-blue-500 hover:underline cursor-pointer">How to learn react
+                        js in 2023</h1>
+
+
+                    {{-- Author & Categories --}}
+                    <div class="flex justify-between flex-wrap gap-3 items-center">
+                        <p class=" font-semibold">
+                            Author: <a href="#" class="text-blue-500 hover:underline">deveoper mithu</a>
+                        </p>
+                        <p class="flex flex-wrap gap-2 font-semibold">
+                            categories:
+                            <a href="#" class="text-blue-500 hover:underline ">Opinion |</a>
+                            <a href="#" class="text-blue-500 hover:underline ">tutorial |</a>
+                            <a href="#" class="text-blue-500 hover:underline ">tutorial</a>
+                        </p>
+                    </div>
+
+                    <p class=" pt-3 text-gray-600 leading-relaxed">Lorem ipsum dolor sit amet consectetur adipisicing
+                        elit. Assumenda eum
+                        repudiandae porro optio Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet consectetur
+                        adipisicing.
+                        neque nesciunt sapiente dignissimos officia niam, dolorem sapiente yjkuk dignissimos a ipsam
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe veniam tenetur temporibus
+                        doloremque expedita magnam neque vitae ullam, dicta necessitatibus itaque. Similique reiciendis
+                        ex eum quibusdam quasi nostrum
+
+                    <p class="py-3 text-gray-600 leading-relaxed">harum neque molestias iusto. Consequatur magnam error
+                        hic nihil pariatur amet voluptatem unde atque aliquam, laborum aliquid quo dolores, doloremque
+                        voluptate, totam minus quos! Sit consequuntur eaque nemo totam corrupti excepturi quidem dicta
+                        aperiam, ipsam eveniet officiis accusantium voluptatum,possimus vitae, ducimus </p>
+
+                    <div class="code whitespace-pre">
+                        Route::get('/', function () {
+                        return view('index');
+                        });
+
+                        Route::get('/post', function () {
+                        return view('post');
+                        });
+                    </div>
+
+                    <p class="py-3 text-gray-600 leading-relaxed">harum neque molestias iusto. Consequatur magnam error
+                        hic nihil pariatur amet voluptatem unde atque aliquam, laborum aliquid quo dolores, doloremque
+                        voluptate, totam minus quos! Sit consequuntur eaque nemo totam corrupti excepturi quidem dicta
+                        aperiam, ipsam eveniet officiis accusantium voluptatum,possimus vitae, ducimus Lorem ipsum,
+                        dolor sit amet consectetur adipisicing elit. Cum neque laborum mollitia quis, perspiciatis ipsam
+                        aliquid. Veniam dolore maiores aut. </p>
                     </p>
 
                     <p class=" font-semibold">
@@ -153,68 +204,6 @@
                         <a href="#" class="text-blue-500 hover:underline ">video |</a>
                         <a href="#" class="text-blue-500 hover:underline ">review</a>
                     </p>
-
-                    <p class=" text-gray-600">Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda eum
-                        repudiandae porro optio Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet consectetur
-                        adipisicing.
-                        neque nesciunt sapiente dignissimos officia niam, dolorem sapiente yjkuk dignissimos a ipsam...
-                        <span class=" text-blue-500 hover:underline cursor-pointer">Read more</span></p>
-                </div>
-            </div>
-            <div class="px-5 py-10 border-b flex flex-col lg:flex-row items-start justify-between gap-5">
-                <img src='https://cdn.pixabay.com/photo/2017/10/10/21/46/laptop-2838917_960_720.jpg' alt=''
-                    class=" w-80 h-60" />
-                <div class="flex flex-col gap-3 capitalize text-sm">
-                    <h3 class="text-2xl font-semibold text-blue-500 hover:underline cursor-pointer">How to learn laravel in 2023 best way ever in the world</h3>
-                    <p class=" font-semibold">
-                        Author: <a href="#" class="text-blue-500 hover:underline">deveoper mithu</a>
-                    </p>
-                    <p class="flex flex-wrap gap-2 font-semibold">
-                        categories:
-                        <a href="#" class="text-blue-500 hover:underline ">Opinion |</a>
-                        <a href="#" class="text-blue-500 hover:underline ">tutorial |</a>
-                        <a href="#" class="text-blue-500 hover:underline ">tutorial</a>
-                    </p>
-
-                    <p class=" font-semibold">
-                        Tags:
-                        <a href="#" class="text-blue-500 hover:underline ">video |</a>
-                        <a href="#" class="text-blue-500 hover:underline ">review</a>
-                    </p>
-
-                    <p class=" text-gray-600">Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda eum
-                        repudiandae porro optio Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet consectetur
-                        adipisicing.
-                        neque nesciunt sapiente dignissimos officia niam, dolorem sapiente yjkuk dignissimos a ipsam...
-                        <span class=" text-blue-500 hover:underline cursor-pointer">Read more</span></p>
-                </div>
-            </div>
-            <div class="px-5 py-10 border-b flex flex-col lg:flex-row items-start justify-between gap-5">
-                <img src='https://cdn.pixabay.com/photo/2017/10/10/21/46/laptop-2838917_960_720.jpg' alt=''
-                    class=" w-80 h-60" />
-                <div class="flex flex-col gap-3 capitalize text-sm">
-                    <h3 class="text-2xl font-semibold text-blue-500 hover:underline cursor-pointer">How to learn react js in 2023</h3>
-                    <p class=" font-semibold">
-                        Author: <a href="#" class="text-blue-500 hover:underline">deveoper mithu</a>
-                    </p>
-                    <p class="flex flex-wrap gap-2 font-semibold">
-                        categories:
-                        <a href="#" class="text-blue-500 hover:underline ">Opinion |</a>
-                        <a href="#" class="text-blue-500 hover:underline ">tutorial |</a>
-                        <a href="#" class="text-blue-500 hover:underline ">tutorial</a>
-                    </p>
-
-                    <p class=" font-semibold">
-                        Tags:
-                        <a href="#" class="text-blue-500 hover:underline ">video |</a>
-                        <a href="#" class="text-blue-500 hover:underline ">review</a>
-                    </p>
-
-                    <p class=" text-gray-600">Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda eum
-                        repudiandae porro optio Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet consectetur
-                        adipisicing.
-                        neque nesciunt sapiente dignissimos officia niam, dolorem sapiente yjkuk dignissimos a ipsam...
-                        <span class=" text-blue-500 hover:underline cursor-pointer">Read more</span></p>
                 </div>
             </div>
         </article>
@@ -225,9 +214,30 @@
                 <h3 class="font-semibold w-full text-xl p-3 bg-blue-500 text-white">Search By Keywords</h3>
                 <div class="flex items-center justify-between gap-3 p-5">
                     <input type="text" placeholder="Search.." class="flex-1 rounded py-1.5 border-gray-300">
-                    <button class=" bg-blue-500 text-white py-1.5 px-4 rounded active:ring-2 active:ring-blue-00 ">Search</button>
+                    <button
+                        class=" bg-blue-500 text-white py-1.5 px-4 rounded active:ring-2 active:ring-blue-600 ">Search</button>
                 </div>
             </div>
+            {{-- similar post --}}
+            <div class="bg-white border border-gray-200 w-full">
+                <h3 class="font-semibold w-full text-xl p-3 bg-blue-500 text-white">Similar Post</h3>
+                <ul class="py-3 px-3 flex flex-col gap-3 items-start">
+                    <li class="text-blue-500 w-full hover:underline cursor-pointer flex items-center gap-3">
+                        <h4>how to learn react js</h4>
+                        <img src="https://cdn.pixabay.com/photo/2018/06/08/00/48/developer-3461405_960_720.png" alt="" class="w-10 rounded">
+                    </li>
+                    <li class="text-blue-500 w-full hover:underline cursor-pointer flex items-center gap-3">
+                        <h4>how to learn react js</h4>
+                        <img src="https://cdn.pixabay.com/photo/2018/06/08/00/48/developer-3461405_960_720.png" alt="" class="w-10 rounded">
+                    </li>
+                    <li class="text-blue-500 w-full hover:underline cursor-pointer flex items-center gap-3">
+                        <h4>how to learn react js</h4>
+                        <img src="https://cdn.pixabay.com/photo/2018/06/08/00/48/developer-3461405_960_720.png" alt="" class="w-10 rounded">
+                    </li>
+                
+                </ul>
+            </div>
+
             {{-- category --}}
             <div class="bg-white border border-gray-200 w-full">
                 <h3 class="font-semibold w-full text-xl p-3 bg-blue-500 text-white">Category</h3>
