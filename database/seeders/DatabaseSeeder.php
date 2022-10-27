@@ -4,9 +4,12 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
+use App\Models\Article;
+use App\Models\Category;
+use App\Models\Tag;
 use App\Models\User;
+use Faker\Factory;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -18,19 +21,27 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
 
-        User::create([
-        'name' => 'developermithu',
-        'email' => 'developermithu@gmail.com',
-        'password' => bcrypt('developermithu'),
-        'email_verified_at' => now(),
-        'isAdmin' => true,
-        ]);
+        // User::factory()->create();
 
-        User::factory(10)->create();
+        // Belongs To Relationships
+        Article::factory()
+            ->count(5)
+            ->forAuthor([
+                'name' => 'developermithu',
+                'email' => 'developermithu@gmail.com',
+                'password' => bcrypt('developermithu'),
+                'email_verified_at' => now(),
+                'isAdmin' => true,
+            ])
+            ->create();
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        // Has Many Relationships
+        User::factory()
+            ->has(Article::factory()->count(3))
+            ->count(10)
+            ->create();
+
+        $this->call(CategorySeeder::class);
+        $this->call(TagSeeder::class);
     }
 }
