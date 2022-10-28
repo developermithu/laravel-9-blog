@@ -13,10 +13,10 @@
 
 <body>
     <nav class="bg-white border-b border-gray-200 px-2 sm:px-4 py-2.5 rounded shadow">
-        <div class="container flex flex-wrap justify-between items-center mx-auto px-20">
-            <a href="https://flowbite.com/" class="flex items-center">
+        <div class="container flex flex-wrap justify-between items-center mx-auto px-5 sm:px-10 lg:px-40">
+            <a href="/" class="flex items-center">
                 <img src="https://flowbite.com/docs/images/logo.svg" class="mr-3 h-6 sm:h-9" alt="Flowbite Logo">
-                <span class="self-center text-xl font-semibold whitespace-nowrap ">Flowbite</span>
+                <span class="self-center text-xl font-semibold whitespace-nowrap ">Mithu's Blog</span>
             </a>
             <div class="flex">
                 <button type="button" data-collapse-toggle="navbar-search" aria-controls="navbar-search"
@@ -33,42 +33,16 @@
 
                 <form class="hidden relative md:block">
                     <div class="flex">
-                        <label for="search-dropdown" class="mb-2 text-sm font-medium text-blue-500 sr-only ">Your
-                            Email</label>
-                        <button id="dropdown-button" data-dropdown-toggle="dropdown"
-                            class="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-blue-500 bg-gray-100 border border-gray-200 rounded-l-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 "
-                            type="button">All categories <svg aria-hidden="true" class="ml-1 w-4 h-4"
-                                fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd"
-                                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                                    clip-rule="evenodd"></path>
-                            </svg></button>
-                        <div id="dropdown" class="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow "
-                            data-popper-reference-hidden="" data-popper-escaped="" data-popper-placement="bottom"
-                            style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate3d(0px, 464.727px, 0px);">
-                            <ul class="py-1 text-sm text-gray-700 " aria-labelledby="dropdown-button">
-                                <li>
-                                    <button type="button"
-                                        class="inline-flex py-2 px-4 w-full hover:bg-gray-100 ">Mockups</button>
-                                </li>
-                                <li>
-                                    <button type="button"
-                                        class="inline-flex py-2 px-4 w-full hover:bg-gray-100 ">Templates</button>
-                                </li>
-                                <li>
-                                    <button type="button"
-                                        class="inline-flex py-2 px-4 w-full hover:bg-gray-100 ">Design</button>
-                                </li>
-                                <li>
-                                    <button type="button"
-                                        class="inline-flex py-2 px-4 w-full hover:bg-gray-100 ">Logos</button>
-                                </li>
-                            </ul>
-                        </div>
+                        <select name="category" class="border-gray-300 rounded-l-lg">
+                            <option value="">Select Category</option>
+                            @foreach ($categories as $category)
+                                <option value="{{ $category->slug }}">{{ $category->name }}</option>
+                            @endforeach
+                        </select>
                         <div class="relative w-96">
-                            <input type="search" id="search-dropdown"
+                            <input name="search" value="{{ request('search') }}" type="search" id="search-dropdown"
                                 class="block p-2.5 w-full z-20 text-sm text-blue-500 bg-gray-50 rounded-r-lg border-l-gray-50 border-l-2 border border-gray-200 focus:ring-blue-500 focus:border-blue-500"
-                                placeholder="Search Mockups, Logos, Design Templates..." required="">
+                                placeholder="Search by tags ...">
                             <button type="submit"
                                 class="absolute top-0 right-0 p-2.5 text-sm font-medium text-white bg-blue-700 rounded-r-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300">
                                 <svg aria-hidden="true" class="w-5 h-5" fill="none" stroke="currentColor"
@@ -98,8 +72,8 @@
             <div class="hidden justify-between items-center w-full md:flex md:w-auto " id="navbar-search">
                 <div class="relative mt-3 md:hidden">
                     <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
-                        <svg class="w-5 h-5 text-gray-500" aria-hidden="true" fill="currentColor"
-                            viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <svg class="w-5 h-5 text-gray-500" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
+                            xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd"
                                 d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
                                 clip-rule="evenodd"></path>
@@ -112,13 +86,13 @@
                 <ul
                     class="flex flex-col p-4 mt-4 bg-gray-50 rounded-lg border border-gray-100 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white">
                     <li>
-                        <a href="#"
+                        <a href="/"
                             class="block py-2 pr-4 pl-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 "
                             aria-current="page">Home</a>
                     </li>
                     <li>
-                        <a href="#"
-                            class="block py-2 pr-4 pl-3 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0">About</a>
+                        <a href="/categories"
+                            class="block py-2 pr-4 pl-3 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0">Category</a>
                     </li>
                     <li>
                         <a href="#"
@@ -131,91 +105,54 @@
 
     <main
         class="grid bg-white grid-cols-12 gap-10 lg:gap-20 py-16 container mx-auto px-5 sm:px-10 lg:px-40 overflow-x-hidden">
+
         <article class=" col-span-12 lg:col-span-8 bg-white border border-gray-200 ">
-            <h3 class="font-semibold w-full text-xl p-3 bg-blue-500 text-white">Newest Articles</h3>
-            <div class="px-5 py-10 border-b flex flex-col lg:flex-row items-start justify-between gap-5">
-                <img src='https://cdn.pixabay.com/photo/2017/10/10/21/46/laptop-2838917_960_720.jpg' alt=''
-                    class=" w-80 h-60 hover:scale-105 transition duration-500 hover:grayscale cursor-pointer" />
-                <div class="flex flex-col gap-3 capitalize text-sm">
-                    <h3 class="text-2xl font-semibold text-blue-500 hover:underline cursor-pointer">How to learn react js in 2023</h3>
-                    <p class=" font-semibold">
-                        Author: <a href="#" class="text-blue-500 hover:underline">deveoper mithu</a>
-                    </p>
-                    <p class="flex flex-wrap gap-2 font-semibold">
-                        categories:
-                        <a href="#" class="text-blue-500 hover:underline ">Opinion |</a>
-                        <a href="#" class="text-blue-500 hover:underline ">tutorial |</a>
-                        <a href="#" class="text-blue-500 hover:underline ">tutorial</a>
-                    </p>
+            <div class="w-full p-3 bg-blue-500 text-white flex items-center justify-between">
+                <h1 class="font-semibold text-xl">Newest Articles</h1>
 
-                    <p class=" font-semibold">
-                        Tags:
-                        <a href="#" class="text-blue-500 hover:underline ">video |</a>
-                        <a href="#" class="text-blue-500 hover:underline ">review</a>
-                    </p>
-
-                    <p class=" text-gray-600">Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda eum
-                        repudiandae porro optio Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet consectetur
-                        adipisicing.
-                        neque nesciunt sapiente dignissimos officia niam, dolorem sapiente yjkuk dignissimos a ipsam...
-                        <span class=" text-blue-500 hover:underline cursor-pointer">Read more</span></p>
-                </div>
+                @if (request('query') != '')
+                    <div>
+                        {{ $articles->count() }} {{ Str::plural('Result', $articles->count()) }} Found
+                    </div>
+                @endif
             </div>
-            <div class="px-5 py-10 border-b flex flex-col lg:flex-row items-start justify-between gap-5">
-                <img src='https://cdn.pixabay.com/photo/2017/10/10/21/46/laptop-2838917_960_720.jpg' alt=''
-                    class=" w-80 h-60" />
-                <div class="flex flex-col gap-3 capitalize text-sm">
-                    <h3 class="text-2xl font-semibold text-blue-500 hover:underline cursor-pointer">How to learn laravel in 2023 best way ever in the world</h3>
-                    <p class=" font-semibold">
-                        Author: <a href="#" class="text-blue-500 hover:underline">deveoper mithu</a>
-                    </p>
-                    <p class="flex flex-wrap gap-2 font-semibold">
-                        categories:
-                        <a href="#" class="text-blue-500 hover:underline ">Opinion |</a>
-                        <a href="#" class="text-blue-500 hover:underline ">tutorial |</a>
-                        <a href="#" class="text-blue-500 hover:underline ">tutorial</a>
-                    </p>
 
-                    <p class=" font-semibold">
-                        Tags:
-                        <a href="#" class="text-blue-500 hover:underline ">video |</a>
-                        <a href="#" class="text-blue-500 hover:underline ">review</a>
-                    </p>
+            @forelse ($articles as $article)
+                <div class="px-5 py-10 border-b flex flex-col lg:flex-row items-start justify-between gap-5">
+                    <img src='https://cdn.pixabay.com/photo/2017/10/10/21/46/laptop-2838917_960_720.jpg'
+                        alt=''
+                        class=" w-80 h-60 hover:scale-105 transition duration-500 hover:grayscale cursor-pointer" />
+                    <div class="flex flex-col gap-3 capitalize text-sm">
+                        <h3 class="text-2xl font-semibold text-blue-500 hover:underline cursor-pointer">
+                            {{ $article->title }}
+                        </h3>
+                        <p class=" font-semibold">
+                            Author: <a href="#" class="text-blue-500 hover:underline">
+                                {{ $article->author->name }}
+                            </a>
+                        </p>
+                        <p class="flex flex-wrap gap-2 font-semibold">
+                            <span>categories:</span>
+                            {!! $article->categories_links !!}
+                        </p>
 
-                    <p class=" text-gray-600">Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda eum
-                        repudiandae porro optio Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet consectetur
-                        adipisicing.
-                        neque nesciunt sapiente dignissimos officia niam, dolorem sapiente yjkuk dignissimos a ipsam...
-                        <span class=" text-blue-500 hover:underline cursor-pointer">Read more</span></p>
+                        <p class="font-semibold">
+                            <span>Tags:</span>
+                            {!! $article->tags_links !!}
+                        </p>
+
+                        <p class=" text-gray-600">
+                            {!! Str::limit($article->content, 180, '...') !!}
+                            <span class=" text-blue-500 hover:underline cursor-pointer">Read more</span>
+                        </p>
+                    </div>
                 </div>
-            </div>
-            <div class="px-5 py-10 border-b flex flex-col lg:flex-row items-start justify-between gap-5">
-                <img src='https://cdn.pixabay.com/photo/2017/10/10/21/46/laptop-2838917_960_720.jpg' alt=''
-                    class=" w-80 h-60" />
-                <div class="flex flex-col gap-3 capitalize text-sm">
-                    <h3 class="text-2xl font-semibold text-blue-500 hover:underline cursor-pointer">How to learn react js in 2023</h3>
-                    <p class=" font-semibold">
-                        Author: <a href="#" class="text-blue-500 hover:underline">deveoper mithu</a>
-                    </p>
-                    <p class="flex flex-wrap gap-2 font-semibold">
-                        categories:
-                        <a href="#" class="text-blue-500 hover:underline ">Opinion |</a>
-                        <a href="#" class="text-blue-500 hover:underline ">tutorial |</a>
-                        <a href="#" class="text-blue-500 hover:underline ">tutorial</a>
-                    </p>
+            @empty
+                <h2 class=" text-4xl font-bold text-red-500 text-center py-5">There is no article</h2>
+            @endforelse
 
-                    <p class=" font-semibold">
-                        Tags:
-                        <a href="#" class="text-blue-500 hover:underline ">video |</a>
-                        <a href="#" class="text-blue-500 hover:underline ">review</a>
-                    </p>
-
-                    <p class=" text-gray-600">Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda eum
-                        repudiandae porro optio Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet consectetur
-                        adipisicing.
-                        neque nesciunt sapiente dignissimos officia niam, dolorem sapiente yjkuk dignissimos a ipsam...
-                        <span class=" text-blue-500 hover:underline cursor-pointer">Read more</span></p>
-                </div>
+            <div class="p-5">
+                {{ $articles->links() }}
             </div>
         </article>
 
@@ -223,87 +160,71 @@
             {{-- Search --}}
             <div class="bg-white border border-gray-200 w-full">
                 <h3 class="font-semibold w-full text-xl p-3 bg-blue-500 text-white">Search By Keywords</h3>
-                <div class="flex items-center justify-between gap-3 p-5">
-                    <input type="text" placeholder="Search.." class="flex-1 rounded py-1.5 border-gray-300">
-                    <button class=" bg-blue-500 text-white py-1.5 px-4 rounded active:ring-2 active:ring-blue-00 ">Search</button>
-                </div>
+                <form action="{{ route('home') }}" method="GET"
+                    class="flex items-center justify-between gap-3 p-5">
+                    <input type="text" value="{{ request('query') }}" name="query"
+                        placeholder="Article title or content..." class="flex-1 rounded py-1.5 border-gray-300">
+                    <button type="submit"
+                        class=" bg-blue-500 text-white py-1.5 px-4 rounded active:ring-2 active:ring-blue-00 ">Search</button>
+                </form>
             </div>
             {{-- category --}}
             <div class="bg-white border border-gray-200 w-full">
-                <h3 class="font-semibold w-full text-xl p-3 bg-blue-500 text-white">Category</h3>
-                <ul class="py-3 ml-6 flex flex-col gap-3 items-start list-disc">
-                    <li class="ml-6 text-blue-500 hover:underline cursor-pointer">web development</li>
-                    <li class="ml-6 text-blue-500 hover:underline cursor-pointer">web development</li>
-                    <li class="ml-6 text-blue-500 hover:underline cursor-pointer">web development</li>
-                    <li class="ml-6 text-blue-500 hover:underline cursor-pointer">web development</li>
-                    <li class="ml-6 text-blue-500 hover:underline cursor-pointer">web development</li>
-                </ul>
+                <h3 class="font-semibold w-full text-xl p-3 bg-blue-500 text-white">Filter By Category</h3>
+                <p class="py-3 ml-6 flex flex-col gap-3 items-start">
+                    @forelse ($categories as $category)
+                        <a href="?category={{ $category->slug }}"
+                            class="text-blue-500 hover:underline cursor-pointer">
+                            {{ $category->name }}
+
+                            @if ($category->articles()->count())
+                                <span class="px-2 py-1 ml-2 inline-block bg-blue-500 text-white rounded-full text-xs">
+                                    {{ $category->articles()->count() }}
+                                </span>
+                            @endif
+                        </a>
+                    @empty
+                        None
+                    @endforelse
+                </p>
             </div>
 
             {{-- Checkbox --}}
             <div class="bg-white border border-gray-200 w-full">
-                <h3 class="font-semibold w-full text-xl p-3 bg-blue-500 text-white">Technology</h3>
-                <ul class=" w-48 ml-6 py-3">
-                    <li class="w-full ">
+                <h3 class="font-semibold w-full text-xl p-3 bg-blue-500 text-white">Filter By Tags</h3>
+                <form action="{{ route('home') }}" method="GET" class=" w-48 ml-6 py-3">
+                    @forelse ($tags as $tag)
                         <div class="flex items-center">
-                            <input id="vue-checkbox" type="checkbox" value=""
+                            <input id="{{ $tag->name }}" type="checkbox" name="tag[]"
+                                value="{{ $tag->slug }}"
                                 class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 ">
-                            <label for="vue-checkbox" class="py-2 ml-3 w-full text-sm  text-blue-600 ">Vue
-                                JS</label>
+                            <label for="{{ $tag->name }}"
+                                class="py-2 ml-3 w-full text-sm  text-blue-600 capitalize ">
+                                {{ $tag->name }}
+                            </label>
                         </div>
-                    </li>
-                    <li class="w-full ">
-                        <div class="flex items-center ">
-                            <input id="react-checkbox" type="checkbox" value=""
-                                class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 ">
-                            <label for="react-checkbox" class="py-2 ml-3 w-full text-sm  text-blue-600 ">React</label>
-                        </div>
-                    </li>
-                    <li class="w-full ">
-                        <div class="flex items-center ">
-                            <input id="angular-checkbox" type="checkbox" value=""
-                                class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 ">
-                            <label for="angular-checkbox"
-                                class="py-2 ml-3 w-full text-sm  text-blue-600 ">Angular</label>
-                        </div>
-                    </li>
-                    <li class="w-full ">
-                        <div class="flex items-center ">
-                            <input id="laravel-checkbox" type="checkbox" value=""
-                                class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 ">
-                            <label for="laravel-checkbox"
-                                class="py-2 ml-3 w-full text-sm  text-blue-600 ">Laravel</label>
-                        </div>
-                    </li>
-                </ul>
+                    @empty
+                        None
+                    @endforelse
 
+                    <button type="submit"
+                        class="px-4 py-1 text-sm mt-2 bg-blue-500 text-white rounded hover:opacity-80">Submit</button>
+                </form>
             </div>
 
             {{-- Tags --}}
             <div class="bg-white border border-gray-200 w-full">
                 <h3 class="font-semibold w-full text-xl p-3 bg-blue-500 text-white">Tags</h3>
-                <ul class="py-3 ml-6 flex gap-3 items-start flex-wrap">
-                    <li class="text-sm px-3 py-1 bg-blue-500 text-gray-100 hover:opacity-80 cursor-pointer rounded">
-                        laravel</li>
-                    <li class="text-sm px-3 py-1 bg-blue-500 text-gray-100 hover:opacity-80 cursor-pointer rounded">php
-                    </li>
-                    <li class="text-sm px-3 py-1 bg-blue-500 text-gray-100 hover:opacity-80 cursor-pointer rounded">js
-                    </li>
-                    <li class="text-sm px-3 py-1 bg-blue-500 text-gray-100 hover:opacity-80 cursor-pointer rounded">
-                        react</li>
-                    <li class="text-sm px-3 py-1 bg-blue-500 text-gray-100 hover:opacity-80 cursor-pointer rounded">
-                        vuejs</li>
-                    <li class="text-sm px-3 py-1 bg-blue-500 text-gray-100 hover:opacity-80 cursor-pointer rounded">
-                        laravel</li>
-                    <li class="text-sm px-3 py-1 bg-blue-500 text-gray-100 hover:opacity-80 cursor-pointer rounded">php
-                    </li>
-                    <li class="text-sm px-3 py-1 bg-blue-500 text-gray-100 hover:opacity-80 cursor-pointer rounded">js
-                    </li>
-                    <li class="text-sm px-3 py-1 bg-blue-500 text-gray-100 hover:opacity-80 cursor-pointer rounded">
-                        react</li>
-                    <li class="text-sm px-3 py-1 bg-blue-500 text-gray-100 hover:opacity-80 cursor-pointer rounded">
-                        vuejs</li>
-                </ul>
+                <p class="py-3 ml-6 flex gap-3 items-start flex-wrap">
+                    @forelse ($tags as $tag)
+                        <a href="?tag={{ $tag->slug }}"
+                            class="text-[11px] px-3 py-1 bg-blue-500 uppercase text-gray-100 hover:opacity-80 cursor-pointer rounded">
+                            {{ $tag->name }}
+                        </a>
+                    @empty
+                        None
+                    @endforelse
+                </p>
             </div>
         </aside>
     </main>

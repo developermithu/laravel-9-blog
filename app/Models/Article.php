@@ -15,7 +15,7 @@ class Article extends Model
     protected $fillable = ['user_id', 'title', 'slug', 'content', 'cover_image'];
 
 
-    
+
     /**
      * Get the author that owns the Article
      *
@@ -44,5 +44,25 @@ class Article extends Model
     public function tags(): BelongsToMany
     {
         return $this->belongsToMany(Tag::class);
+    }
+
+    public function getCategoriesLinksAttribute()
+    {
+        $categories = $this->categories()->get()->map(function ($category) {
+            return '<a href=" ' . route('home') . '?category=' . $category->slug . ' " class="text-blue-500 hover:underline"> ' . $category->name . ' </a>';
+        })->implode('|');
+
+        if ($categories === '') return 'None';
+        return $categories;
+    }
+
+    public function getTagsLinksAttribute()
+    {
+        $tags = $this->tags()->get()->map(function ($tag) {
+            return '<a href=" ' . route('home') . '?tag=' . $tag->slug . ' " class="text-blue-500 hover:underline"> ' . $tag->name . ' </a>';
+        })->implode('|');
+
+        if ($tags === '') return 'None';
+        return $tags;
     }
 }
