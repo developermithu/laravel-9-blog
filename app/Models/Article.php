@@ -65,4 +65,9 @@ class Article extends Model
         if ($tags === '') return 'None';
         return $tags;
     }
+
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
 }

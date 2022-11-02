@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -17,13 +18,16 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', HomeController::class)->name('home');
 
-Route::get('/post', function () {
-    return view('post');
+// auth user routes
+Route::group([
+    'prefix' => 'user',
+    'as' => 'user.'
+], function () {
+    Route::resource('articles', ArticleController::class);
 });
 
-Route::get('/category', function () {
-    return view('category');
-});
+
+Route::get('/category', [CategoryController::class, 'index'])->name('categories');
 
 
 Route::get('/dashboard', function () {
