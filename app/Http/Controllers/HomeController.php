@@ -48,8 +48,7 @@ class HomeController extends Controller
             ->latest()
             ->paginate(5);
 
-        $categories = Category::all();
         $tags = Tag::all();
-        return view('index', compact('articles', 'categories', 'tags'));
+        return view('index', compact('articles',  'tags'));
     }
 }

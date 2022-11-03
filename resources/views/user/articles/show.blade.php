@@ -59,9 +59,9 @@
                             class="text-gray-800 hover:underline font-medium cursor-pointer">
                             {{ $category->name }}
 
-                            @if ($category->articles()->count())
+                            @if ($category->articles_count)
                                 <span class="px-2 py-1 ml-2 inline-block bg-gray-800 text-white rounded-full text-xs">
-                                    {{ $category->articles()->count() }}
+                                    {{ $category->articles_count }}
                                 </span>
                             @endif
                         </a>

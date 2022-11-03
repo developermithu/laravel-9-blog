@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'My App')
+@section('title', 'Create Article')
 
 @section('content')
     <div class="bg-white py-16 px-5 mx-auto max-w-4xl">

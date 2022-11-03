@@ -71,9 +71,9 @@
                 <form action="{{ route('home') }}" method="GET" class="flex items-center justify-between gap-3 p-5">
                     <input type="text" value="{{ request('query') }}" name="query"
                         placeholder="Article title or content..."
-                        class="flex-1 rounded py-1.5 border-gray-300 focus:ring-gray-800 focus:border-gray-800">
+                        class="flex-1 rounded py-2 border-gray-300 focus:ring-gray-800 focus:border-gray-800">
                     <button type="submit"
-                        class=" bg-gray-800 text-white py-1.5 px-4 rounded active:ring-2 active:ring-gray-900 ">Search</button>
+                        class=" bg-gray-800 text-white py-2 px-4 rounded active:ring-2 active:ring-gray-900 ">Search</button>
                 </form>
             </div>
             {{-- category --}}
@@ -85,9 +85,9 @@
                             class="text-gray-800 hover:underline font-medium cursor-pointer">
                             {{ $category->name }}
 
-                            @if ($category->articles()->count())
+                            @if ($category->articles_count)
                                 <span class="px-2 py-1 ml-2 inline-block bg-gray-800 text-white rounded-full text-xs">
-                                    {{ $category->articles()->count() }}
+                                    {{ $category->articles_count }}
                                 </span>
                             @endif
                         </a>

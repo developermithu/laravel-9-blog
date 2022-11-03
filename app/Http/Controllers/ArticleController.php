@@ -3,20 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Models\Article;
-use App\Models\Category;
 use App\Models\Tag;
 use Illuminate\Http\Request;
 
 class ArticleController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        //
+        $articles = auth()->user()->articles;
+
+        $articles->load('tags', 'categories');
+
+        return view('user.articles.index', compact('articles',));
     }
 
     /**
@@ -26,8 +24,7 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        $categories = Category::all();
-        return view('user.articles.create', compact('categories'));
+        return view('user.articles.create');
     }
 
     /**
@@ -49,9 +46,8 @@ class ArticleController extends Controller
      */
     public function show(Article $article)
     {
-        $categories = Category::all();
         $tags = Tag::all();
-        return view('user.articles.show', compact('article', 'categories', 'tags'));
+        return view('user.articles.show', compact('article', 'tags'));
     }
 
     /**

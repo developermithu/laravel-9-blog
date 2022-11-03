@@ -37,7 +37,10 @@
         </div>
 
         <x-slot name="footer">
-            <x-button wire:click="store" label="Save" wire:loading.spinner="save" primary />
+            <div class="flex items-center gap-x-5 justify-end">
+                <x-button flat sm rose label='Go Back' href="{{ route('user.articles.index') }}" />
+                <x-button wire:click="store" label="Save" wire:loading.spinner="save" primary />
+            </div>
         </x-slot>
     </x-card>
 </div>

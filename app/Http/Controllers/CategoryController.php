@@ -8,7 +8,7 @@ class CategoryController extends Controller
 {
     public function index()
     {
-        $categories = Category::all();
-        return view('categories', compact('categories'));
+        // Category was passing by appServiceProvider globally
+        return view('categories',);
     }
 }

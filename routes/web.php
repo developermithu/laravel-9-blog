@@ -3,6 +3,7 @@
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,6 +27,7 @@ Route::group([
     Route::resource('articles', ArticleController::class);
 });
 
+Route::get('/{user}/account', [UserController::class, 'index'])->name('user.account');
 
 Route::get('/category', [CategoryController::class, 'index'])->name('categories');
 
