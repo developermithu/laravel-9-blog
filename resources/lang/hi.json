@@ -1,0 +1,23 @@
+{
+    "Name": "नाम",
+    "Email": "ईमेल",
+    "Password": "पासवर्ड",
+    "Confirm Password": "पासवर्ड की पुष्टि करें",
+    "Remember me": "मुझे याद रखें",
+    "Forgot your password?": "अपना पासवर्ड भूल गए?",
+    "Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.": "अपना पासवर्ड भूल गए? कोई बात नहीं। बस हमें अपना ईमेल बताएं पता और हम आपको एक पासवर्ड रीसेट लिंक ईमेल करेंगे जो आपको एक नया चुनने की अनुमति देगा।",
+    "Already registered?": "पहले से पंजीकृत?",
+    "Log in": "लॉगिन",
+    "Register": "रजिस्टर",
+    "Email Password Reset Link": "ईमेल पासवर्ड रीसेट लिंक",
+
+    "Lara app": "लारा ऐप",
+    "Home": "घर",
+    "Category": "श्रेणी",
+    "Profile": "प्रोफाइल",
+    "Newest Articles": "नवीनतम लेख",
+    "Search By Keywords": "कीवर्ड्स द्वारा खोजें",
+    "Search": "खोज",
+    "Clear": "साफ़ करें",
+    "Select Category": "श्रेणी चुनें"
+}

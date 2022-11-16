@@ -1,8 +1,9 @@
-@extends('layouts.app')
+<x-app-layout>
+    {{-- Page Title --}}
+    <x-slot name="title">
+        My Account
+    </x-slot>
 
-@section('title', auth()->user()->name . ' | Dashbaord')
-
-@section('content')
     <div class="bg-white py-16 px-5 sm:px-10 lg:px-40 mx-auto container flex gap-6 items-start justify-between">
 
         @include('user.sidebar')
@@ -30,4 +31,5 @@
 
 
     </div>
-@endsection
+
+</x-app-layout>

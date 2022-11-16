@@ -1,8 +1,8 @@
-@extends('layouts.app')
+<x-app-layout>
+    <x-slot name="title">
+        Article List
+    </x-slot>
 
-@section('title', 'My Articles')
-
-@section('content')
     <div class="bg-white py-16 px-5 sm:px-10 lg:px-40 mx-auto container flex gap-6 items-start justify-between">
 
         @include('user.sidebar')
@@ -85,4 +85,4 @@
             </table>
         </div>
     </div>
-@endsection
+</x-app-layout>

@@ -1,7 +1,7 @@
-<x-app-layout>
+<div>
     {{-- Page Title --}}
     <x-slot name="title">
-        Laravel 9 blog | home
+        Laravel 9 blog | mithu
     </x-slot>
 
     <div
@@ -9,13 +9,18 @@
 
         <article class="col-span-12 lg:col-span-8 bg-white border border-gray-200 ">
             <div class="w-full p-3 bg-gray-800 text-white flex items-center justify-between">
-                <h1 class="font-semibold text-xl">Newest Articles</h1>
+                <h1 class="font-semibold text-xl">{{ __('Newest Articles') }}</h1>
 
-                @if (request('query') != '')
+                @if ($searchQuery != '')
                     <div>
                         {{ $articles->count() }} {{ Str::plural('Result', $articles->count()) }} Found
                     </div>
                 @endif
+
+                <select wire:click.prevent="orderBy" class=" text-gray-800 rounded py-1">
+                    <option value="desc" selected>Latest News</option>
+                    <option value="asc">Oldest News</option>
+                </select>
             </div>
 
             @forelse ($articles as $article)
@@ -68,21 +73,30 @@
         <aside class=" col-span-12 lg:col-span-4 flex items-center flex-col gap-10">
             {{-- Search --}}
             <div class="bg-white border border-gray-200 w-full">
-                <h3 class="font-semibold w-full text-xl p-3 bg-gray-800 text-white">Search By Keywords</h3>
-                <form action="{{ route('home') }}" method="GET" class="flex items-center justify-between gap-3 p-5">
-                    <input type="text" value="{{ request('query') }}" name="query"
+                <h3 class="font-semibold w-full text-xl p-3 bg-gray-800 text-white">
+                    {{ __('Search By Keywords') }}
+                </h3>
+                <div class="flex items-center flex-wrap justify-between gap-3 p-5">
+                    <input type="text" wire:model.debounce.300ms="searchQuery" value="{{ $searchQuery }}"
                         placeholder="Article title or content..."
                         class="flex-1 rounded py-2 border-gray-300 focus:ring-gray-800 focus:border-gray-800">
-                    <button type="submit"
-                        class=" bg-gray-800 text-white py-2 px-4 rounded active:ring-2 active:ring-gray-900 ">Search</button>
-                </form>
+
+                    @if ($searchQuery != '')
+                        <a wire:click.prevent="removeSearch"
+                            class="bg-rose-700 text-white py-2 px-4 rounded active:ring-2 active:ring-rose-700 hover:cursor-pointer">{{ __('Clear') }}</a>
+                    @else
+                        <button
+                            class="bg-gray-800 text-white py-2 px-4 rounded active:ring-2 active:ring-gray-900">{{ __('Search') }}</button>
+                    @endif
+
+                </div>
             </div>
             {{-- category --}}
             <div class="bg-white border border-gray-200 w-full">
                 <h3 class="font-semibold w-full text-xl p-3 bg-gray-800 text-white">Filter By Category</h3>
                 <p class="py-3 ml-6 flex flex-col gap-3 items-start">
                     @forelse ($categories as $category)
-                        <a href="{{ route('home') }}?category={{ $category->slug }}"
+                        <a wire:click.prevent="searchByCategory('{{ $category->slug }}')"
                             class="text-gray-800 hover:underline font-medium cursor-pointer">
                             {{ $category->name }}
 
@@ -101,17 +115,14 @@
             {{-- Checkbox --}}
             <div class="bg-white border border-gray-200 w-full">
                 <h3 class="font-semibold w-full text-xl p-3 bg-gray-800 text-white">Filter By Tags</h3>
-                <form action="{{ route('home') }}" method="GET" class=" w-48 ml-6 py-3">
+                <form class=" w-48 ml-6 py-3">
                     @forelse ($tags as $tag)
                         <div class="flex items-center">
-                            <input id="{{ $tag->name }}" type="checkbox" name="tag[]" value="{{ $tag->slug }}"
+                            <input wire:click.prevent="searchByTags('{{ $tag->slug }}')" type="checkbox"
+                                value="{{ $tag->slug }}"
                                 class="w-4 h-4 text-gray-800 bg-gray-100 rounded border-gray-300 focus:ring-gray-800"
-                                {{-- @if ($tag->slug == request('tag[]')) @checked(true) @endif --}}>
-
-
-
-                            <label for="{{ $tag->name }}"
-                                class="py-2 ml-3 w-full text-sm font-semibold text-gray-800 capitalize ">
+                                {{-- @if ($tag->slug == request('tagName')) @checked(true) @endif --}}>
+                            <label class="py-2 ml-3 w-full text-sm font-semibold text-gray-800 capitalize ">
                                 {{ $tag->name }}
                             </label>
                         </div>
@@ -140,4 +151,4 @@
             </div>
         </aside>
     </div>
-</x-app-layout>
+</div>

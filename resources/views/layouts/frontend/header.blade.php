@@ -1,15 +1,17 @@
 <nav x-data="{ open: false }" class="bg-white border-b border-gray-200 px-2 sm:px-4 py-2.5 rounded shadow">
     <div class="container flex flex-wrap justify-between items-center mx-auto px-5 sm:px-10 lg:px-40">
         <a href="/" class="flex items-center text-gray-800 hover:opacity-80">
-            <span class="self-center text-xl lg:text-2xl font-bold whitespace-nowrap ">LaraApp</span>
+            <span class="self-center text-xl lg:text-2xl font-bold whitespace-nowrap ">
+                {{ __('Lara app') }}
+            </span>
         </a>
 
         {{-- search box --}}
         <div class="flex">
             <form action="{{ route('home') }}" class="hidden relative md:block">
                 <div class="flex">
-                    <select name="category" class="border-gray-300 rounded-l-lg">
-                        <option value="">Select Category</option>
+                    <select name="category" class="border-gray-300 rounded-l-lg capitalize">
+                        <option value="">{{ __('Select Category') }}</option>
                         @foreach ($categories as $category)
                             <option value="{{ $category->slug }}">{{ $category->name }}</option>
                         @endforeach
@@ -21,7 +23,7 @@
                         <button type="submit"
                             class="absolute top-0 right-0 p-2.5 text-sm font-medium text-white bg-gray-800 rounded-r-lg border border-gray-800 hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-300 flex gap-1.5">
                             <x-icon name='search' class="w-5 h-5" />
-                            <span>Search</span>
+                            <span>{{ __('Search') }}</span>
                         </button>
                     </div>
                 </div>
@@ -47,22 +49,26 @@
                 class="flex flex-col p-4 mt-4 bg-gray-50 rounded-lg border border-gray-100 md:flex-row md:space-x-5 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white">
                 <li class="hover:bg-gray-100 px-3 py-1.5 rounded">
                     <a href="/"
-                        class="block text-white bg-gray-800 rounded md:bg-transparent md:text-gray-800  ">Home</a>
+                        class="block text-white bg-gray-800 rounded md:bg-transparent md:text-gray-800">{{ __('Home') }}</a>
                 </li>
                 <li class="hover:bg-gray-100 px-3 py-1.5 rounded">
                     <a href="{{ route('categories') }}"
-                        class="block text-white bg-gray-800 rounded md:bg-transparent md:text-gray-800  ">Category</a>
+                        class="block text-white bg-gray-800 rounded md:bg-transparent md:text-gray-800">{{ __('Category') }}</a>
                 </li>
 
 
                 @guest
                     <li class="hover:bg-gray-100 px-3 py-1.5 rounded">
                         <a href="/login"
-                            class="block text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-gray-800 md:p-0">Login</a>
+                            class="block text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-gray-800 md:p-0">
+                            {{ __('Log in') }}
+                        </a>
                     </li>
                     <li class="hover:bg-gray-100 px-3 py-1.5 rounded">
                         <a href="/register"
-                            class="block text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-gray-800 md:p-0">Register</a>
+                            class="block text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-gray-800 md:p-0">
+                            {{ __('Register') }}
+                        </a>
                     </li>
                 @endguest
 
@@ -72,7 +78,7 @@
                             <x-slot name="trigger">
                                 <button
                                     class="text-white bg-gray-800 rounded md:bg-transparent md:text-gray-800 md:p-0 flex items-center gap-x-2 ">
-                                    Profile
+                                    {{ __('Profile') }}
                                     <x-icon name='chevron-down' class="w-4 h-4" />
                                 </button>
                             </x-slot>
@@ -93,6 +99,45 @@
                         </x-dropdown>
                     </li>
                 @endauth
+
+                <li class="hover:bg-gray-100 px-3 py-1.5 rounded">
+                    <x-dropdown width="w-24">
+                        <x-slot name="trigger">
+                            <button
+                                class="text-white bg-gray-800 rounded md:bg-transparent md:text-gray-800 md:p-0 flex items-center gap-x-2 uppercase ">
+                                @if (app()->getLocale() == 'en')
+                                    <img src="https://upload.wikimedia.org/wikipedia/en/thumb/a/a4/Flag_of_the_United_States.svg/1200px-Flag_of_the_United_States.svg.png?20151118161041"
+                                        alt="en" class="w-4 h-4 rounded-full">
+                                @elseif (app()->getLocale() == 'bn')
+                                    <img src="https://upload.wikimedia.org/wikipedia/commons/f/f9/Flag_of_Bangladesh.svg"
+                                        alt="bn" class="w-4 h-4 rounded-full" />
+                                @elseif (app()->getLocale() == 'hi')
+                                    <img src="https://upload.wikimedia.org/wikipedia/en/thumb/4/41/Flag_of_India.svg/1280px-Flag_of_India.svg.png"
+                                        alt="hi" class="w-4 h-4 rounded-full" />
+                                @endif
+                                {{ app()->getLocale() }}
+                            </button>
+                        </x-slot>
+
+
+                        @foreach (config('app.locales') as $locale)
+                            <x-dropdown.item href="{{ request()->url() }}?language={{ $locale }}"
+                                class="flex items-center gap-3 uppercase">
+                                @if ($locale == 'en')
+                                    <img src="https://upload.wikimedia.org/wikipedia/en/thumb/a/a4/Flag_of_the_United_States.svg/1200px-Flag_of_the_United_States.svg.png?20151118161041"
+                                        alt="en" class="w-5 h-5 rounded-full">
+                                @elseif ($locale == 'bn')
+                                    <img src="https://upload.wikimedia.org/wikipedia/commons/f/f9/Flag_of_Bangladesh.svg"
+                                        alt="bn" class="w-5 h-5 rounded-full" />
+                                @elseif ($locale == 'hi')
+                                    <img src="https://upload.wikimedia.org/wikipedia/en/thumb/4/41/Flag_of_India.svg/1280px-Flag_of_India.svg.png"
+                                        alt="hi" class="w-5 h-5 rounded-full" />
+                                @endif
+                                {{ $locale }}
+                            </x-dropdown.item>
+                        @endforeach
+                    </x-dropdown>
+                </li>
             </ul>
         </div>
     </div>

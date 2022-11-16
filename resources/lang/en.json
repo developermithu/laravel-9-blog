@@ -1,0 +1,23 @@
+{
+    "Name": "Name",
+    "Email": "Email",
+    "Password": "Password",
+    "Confirm Password": "Confirm Password",
+    "Remember me": "Remember me",
+    "Forgot your password?": "Forgot your password?",
+    "Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.": "Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.",
+    "Already registered?": "Already registered?",
+    "Log in": "Log in",
+    "Register": "Register",
+    "Email Password Reset Link": "Email Password Reset Link",
+
+    "Lara app": "Lara app",
+    "Home": "Home",
+    "Category": "Category",
+    "Profile": "Profile",
+    "Newest Articles": "Newest Articles",
+    "Search By Keywords": "Search By Keywords",
+    "Search": "Search",
+    "Clear": "Clear",
+    "Select Category": "Select Category"
+}

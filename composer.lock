@@ -5441,16 +5441,16 @@
         },
         {
             "name": "wireui/wireui",
-            "version": "v1.17.1",
+            "version": "v1.17.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/wireui/wireui.git",
-                "reference": "f82d8472cdb52161c088bc7426a1c0371ea85b31"
+                "reference": "09d107a2e1d111a6e6d9bdc88e3ba45c6a765a5e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/wireui/wireui/zipball/f82d8472cdb52161c088bc7426a1c0371ea85b31",
-                "reference": "f82d8472cdb52161c088bc7426a1c0371ea85b31",
+                "url": "https://api.github.com/repos/wireui/wireui/zipball/09d107a2e1d111a6e6d9bdc88e3ba45c6a765a5e",
+                "reference": "09d107a2e1d111a6e6d9bdc88e3ba45c6a765a5e",
                 "shasum": ""
             },
             "require": {
@@ -5503,7 +5503,7 @@
             ],
             "support": {
                 "issues": "https://github.com/wireui/wireui/issues",
-                "source": "https://github.com/wireui/wireui/tree/v1.17.1"
+                "source": "https://github.com/wireui/wireui/tree/v1.17.2"
             },
             "funding": [
                 {
@@ -5511,7 +5511,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-10-20T01:52:48+00:00"
+            "time": "2022-11-04T04:27:39+00:00"
         }
     ],
     "packages-dev": [
@@ -8181,5 +8181,5 @@
         "php": "^8.0.2"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.0.0"
+    "plugin-api-version": "2.3.0"
 }

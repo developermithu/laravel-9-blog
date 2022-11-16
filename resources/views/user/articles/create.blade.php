@@ -1,9 +1,9 @@
-@extends('layouts.app')
+<x-app-layout>
+    <x-slot name="title">
+        Create Article
+    </x-slot>
 
-@section('title', 'Create Article')
-
-@section('content')
     <div class="bg-white py-16 px-5 mx-auto max-w-4xl">
         @livewire('user.create-article')
     </div>
-@endsection
+</x-app-layout>

@@ -1,8 +1,8 @@
-@extends('layouts.app')
+<x-app-layout>
+    <x-slot name="title">
+        {{ $article->title }}
+    </x-slot>
 
-@section('title', $article->title)
-
-@section('content')
     <div
         class="grid bg-white grid-cols-12 gap-10 lg:gap-20 py-16 container mx-auto px-5 sm:px-10 lg:px-40 overflow-x-hidden">
 
@@ -109,4 +109,4 @@
             </div>
         </aside>
     </div>
-@endsection
+</x-app-layout>

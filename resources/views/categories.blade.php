@@ -1,8 +1,9 @@
-@extends('layouts.app')
+<x-app-layout>
+    {{-- Page Title --}}
+    <x-slot name="title">
+        Category List
+    </x-slot>
 
-@section('title', 'All category')
-
-@section('content')
     <section class="bg-white ">
         <div class="container px-5 sm:px-10 lg:px-40 py-10 mx-auto">
             <div class="text-center">
@@ -20,11 +21,11 @@
                 @forelse ($categories as $category)
                     <div>
                         <img class="relative z-10 object-cover w-full rounded-md h-96"
-                            src="https://cdn.pixabay.com/photo/2016/11/19/15/32/code-1839877_960_720.jpg"
-                            alt="">
+                            src="https://cdn.pixabay.com/photo/2016/11/19/15/32/code-1839877_960_720.jpg" alt="">
 
                         <div class="relative z-20 max-w-lg p-6 mx-auto -mt-20 bg-white rounded-md shadow ">
-                            <a href="#" class="font-semibold text-gray-800 hover:underline  md:text-2xl capitalize">
+                            <a href="#"
+                                class="font-semibold text-gray-800 hover:underline  md:text-2xl capitalize">
                                 {{ $category->name }}
                             </a>
 
@@ -44,4 +45,5 @@
             </div>
         </div>
     </section>
-@endsection
+
+</x-app-layout>
